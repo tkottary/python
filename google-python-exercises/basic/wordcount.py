@@ -49,17 +49,53 @@ import sys
 
 # This basic command line argument parsing code is provided and
 # calls the print_words() and print_top() functions which you must define.
+def print_words(filename):
+
+    sortedDict = gatherData(filename)
+    words = sorted(sortedDict.keys())
+    for word in words:
+        print word , sortedDict[word]
+
+def gatherData(filename):
+    masterDict = {}
+    f = open(filename,'rU')
+    for line in f:
+     stringList = line.split()
+     for word in stringList:
+        word  = word.lower()
+        if word in masterDict:
+         masterDict[word] = masterDict[word] +1
+        else:
+         masterDict[word] = 1
+    f.close()
+
+    return masterDict
+
+def words(filename):
+    words = gatherData(filename)
+    wordlst = sorted(words.items(), key = get_count , reverse=True)
+    for item in wordlst[:20]:
+        print item[0],item[1]
+
+
+def get_count(word_count_tuple):
+  """Returns the count from a dict word/count tuple  -- used for custom sort."""
+  return word_count_tuple[1]
+
+def countWord(tuplecount):
+    return tuplecount[1]
+
 def main():
   if len(sys.argv) != 3:
-    print 'usage: ./wordcount.py {--count | --topcount} file'
+    print 'usage: ./wordcount.py {-count | -topcount} file'
     sys.exit(1)
 
   option = sys.argv[1]
   filename = sys.argv[2]
-  if option == '--count':
+  if option == '-count':
     print_words(filename)
-  elif option == '--topcount':
-    print_top(filename)
+  elif option == '-topcount':
+    words(filename)
   else:
     print 'unknown option: ' + option
     sys.exit(1)

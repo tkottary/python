@@ -42,7 +42,7 @@ def front_x(words):
   listA =[]
   listB= []
   for str in words:
-      if str[0] == 'x':
+      if str[0] == 'x': #if w.startswith('x'):
         listA.append(str)
       else:
         listB.append(str)
