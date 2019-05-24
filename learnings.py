@@ -26,3 +26,9 @@ if afd< today:
 
 imetoAfd= afd - today
 print (" Its just ",timetoAfd.days, "days away")
+
+
+#### version of python that is used
+
+import platform
+print('This is python version {}'.format(platform.python_version()))
