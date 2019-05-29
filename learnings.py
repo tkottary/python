@@ -32,3 +32,10 @@ print (" Its just ",timetoAfd.days, "days away")
 
 import platform
 print('This is python version {}'.format(platform.python_version()))
+
+## to get the maximum num in Python
+
+float('inf')
+
+### to get the minimum no in python
+float('-inf')
